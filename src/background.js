@@ -34,8 +34,12 @@ function formatFilename(downloadItem, format) {
 }
 
 function determineFilename(downloadItem, suggest) {
-    const format = '%y-%m-%d/%f';
-    suggest({filename: formatFilename(downloadItem, format)});
+    chrome.storage.sync.get({
+        'format': DEFAULT_FORMAT
+    }, items => {
+        suggest({filename: formatFilename(downloadItem, items.format)});
+    });
+    return true;
 }
 
 if (typeof chrome != 'undefined') {

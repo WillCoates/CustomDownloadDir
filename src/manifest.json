@@ -5,10 +5,17 @@
     "description": "Chrome extension to customise download directory based off metadata",
 
     "author": "William Coates",
-    "permissions": ["downloads"],
+    "permissions": [
+        "downloads",
+        "storage"
+    ],
     "background": {
-        "scripts": ["background.js"],
+        "scripts": ["defaults.js", "background.js"],
         "persistent": false
-    }
+    },
 
+    "options_ui": {
+        "page": "options.html",
+        "open_in_tab": false
+    }
 }
