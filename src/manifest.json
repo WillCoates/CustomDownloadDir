@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Custom Download Directory",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "description": "Chrome extension to customise download directory based off metadata",
     "icons": {
         "16": "icon/icon16.png",
