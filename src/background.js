@@ -22,7 +22,7 @@ function formatFilename(downloadItem, format) {
             } else {
                 let formatter = specifiers[char];
                 if (formatter == undefined) {
-                    console.error('Formatter', f, 'at index', next + 1, 'is invalid', format);
+                    console.error('Formatter', char, 'at index', next + 1, 'is invalid', format);
                 } else {
                     filename += formatter(downloadItem);
                 }

@@ -11,6 +11,12 @@ describe('formatFilename', function() {
     it('should return % for %% specifier', function() {
         expect(background.formatFilename({}, '%%')).to.equal('%');
     });
+    it('should return blank for illegal specifier', function() {
+        expect(background.formatFilename({}, '%!')).to.equal('');
+    });
+    it('should return blank for unfinished specifier', function() {
+        expect(background.formatFilename({}, '%')).to.equal('');
+    });
     it('should return filename for %f specifier', function() {
         expect(background.formatFilename({filename: 'example.json'}, '%f')).to.equal('example.json');
     });
