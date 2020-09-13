@@ -6,7 +6,8 @@ const specifiers = {
     'h': item => new Date(item.startTime).getHours().toString().padStart(2, '0'),
     'M': item => new Date(item.startTime).getMinutes().toString().padStart(2, '0'),
     's': item => new Date(item.startTime).getSeconds().toString().padStart(2, '0'),
-    'f': item => item.filename
+    'f': item => item.filename,
+    'H': item => new URL(item.url).hostname
 }
 
 function formatFilename(downloadItem, format) {

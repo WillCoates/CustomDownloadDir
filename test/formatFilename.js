@@ -37,4 +37,8 @@ describe('formatFilename', function() {
         expect(background.formatFilename({startTime: '2020-09-10T14:53:38'}, '%s')).to.equal('38');
         expect(background.formatFilename({startTime: '2020-09-10T14:53:08'}, '%s')).to.equal('08');
     });
+    it('should return host for %H specifier', function() {
+        expect(background.formatFilename({url: 'https://willtc.uk/demo/example.json' }, '%H')).to.equal('willtc.uk');
+        expect(background.formatFilename({url: 'https://willtc.uk:8433/demo/example.json' }, '%H')).to.equal('willtc.uk');
+    });
 });
