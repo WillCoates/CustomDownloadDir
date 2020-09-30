@@ -1,3 +1,5 @@
+'use strict';
+
 const specifiers = {
     '%': () => '%',
     'y': item => new Date(item.startTime).getFullYear().toString(),
@@ -10,29 +12,20 @@ const specifiers = {
     'H': item => new URL(item.url).hostname
 }
 
-function formatFilename(downloadItem, format) {
-    let filename = "";
+Object.freeze(specifiers);
 
-    for (let last = 0, next = 0; next != -1; last = next + 2) {
-        next = format.indexOf('%', last);
-        filename += format.substring(last, next == -1 ? undefined : next);
-        if (next != -1) {
-            let char = format.charAt(next + 1);
-            if (char == '') {
-                console.error('Format specifier at end of string', format);
-            } else {
-                let formatter = specifiers[char];
-                if (formatter == undefined) {
-                    console.error('Formatter', f, 'at index', next + 1, 'is invalid', format);
-                } else {
-                    filename += formatter(downloadItem);
-                }
-            }
-        }
-    }
+const ifCond = (value, pred, newValue) => pred(value) ? newValue : value;
 
-    return filename;
-}
+const formatFilename = (downloadItem, format) => 
+    format.length === 0 ?
+        "" :
+        format.charAt(0) === '%' ? 
+            // If specifier can't be found, insert an empty string
+            ifCond(specifiers[format.charAt(1)], x => x == undefined, () => '')(downloadItem)
+                + formatFilename(downloadItem, format.substring(2)) :
+            format.indexOf('%') === -1 ?
+                format :
+                format.substring(0, format.indexOf('%')) + formatFilename(downloadItem, format.substring(format.indexOf('%')));
 
 function determineFilename(downloadItem, suggest) {
     chrome.storage.sync.get({
