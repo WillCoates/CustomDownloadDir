@@ -47,4 +47,8 @@ describe('formatFilename', function() {
         expect(background.formatFilename({url: 'https://willtc.uk/demo/example.json' }, '%H')).to.equal('willtc.uk');
         expect(background.formatFilename({url: 'https://willtc.uk:8433/demo/example.json' }, '%H')).to.equal('willtc.uk');
     });
+    it('should return file path for %p specifier', function() {
+        expect(background.formatFilename({url: 'https://willtc.uk/demo/example.json' }, '%p')).to.equal('demo');
+        expect(background.formatFilename({url: 'https://willtc.uk/example.json' }, '%p')).to.equal('');
+    });
 });

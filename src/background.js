@@ -1,6 +1,6 @@
 'use strict';
 
-const specifiers = {
+const specifiers = Object.freeze({
     '%': () => '%',
     'y': item => new Date(item.startTime).getFullYear().toString(),
     'm': item => (new Date(item.startTime).getMonth() + 1).toString().padStart(2, '0'),
@@ -9,10 +9,9 @@ const specifiers = {
     'M': item => new Date(item.startTime).getMinutes().toString().padStart(2, '0'),
     's': item => new Date(item.startTime).getSeconds().toString().padStart(2, '0'),
     'f': item => item.filename,
-    'H': item => new URL(item.url).hostname
-}
-
-Object.freeze(specifiers);
+    'H': item => new URL(item.url).hostname,
+    'p': item => { const path = new URL(item.url).pathname; return path.substring(1, Math.max(path.lastIndexOf('/'), 1)); }
+});
 
 const ifCond = (value, pred, newValue) => pred(value) ? newValue : value;
 
