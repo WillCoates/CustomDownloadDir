@@ -1,6 +1,6 @@
 {
   "name": "customdownloaddir",
-  "version": "0.0.0",
+  "version": "1.0.2",
   "description": "Chrome extension to customise download directory based off metadata",
   "main": "index.js",
   "scripts": {

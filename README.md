@@ -11,20 +11,23 @@ The format string contains embedded formatting tags prefixed with a %, which
 are explained in the table below. Any other characters are used as is. Use /
 to create folders based off the tags provided.
 
-| Specifier | Output                                        | Example      |
-|:--------- |:--------------------------------------------- |:------------ |
-| %         | The character %                               | %            |
-| f         | The name of the file being downloaded         | example.json |
-| y         | The year the download started                 | 2020         |
-| m         | The month the download started as two digits  | 09           |
-| d         | The day the download started as two digits    | 10           |
-| h         | The hour the download started as two digits   | 14           |
-| M         | The minute the download started as two digits | 53           |
-| s         | The second the download started as two digits | 08           |
+| Specifier | Output                                                   | Example      |
+|:--------- |:-------------------------------------------------------- |:------------ |
+| %         | The character %                                          | %            |
+| f         | The name of the file being downloaded                    | example.json |
+| y         | The year the download started                            | 2020         |
+| m         | The month the download started as two digits             | 09           |
+| d         | The day the download started as two digits               | 10           |
+| h         | The hour the download started as two digits              | 14           |
+| M         | The minute the download started as two digits            | 53           |
+| s         | The second the download started as two digits            | 08           |
+| H         | The hostname of the website the download originated from | willtc.uk    |
+| p         | The path in the url the file is stored in                | static/js    |
 
 ## Examples
 
-| Format         | Example output             |
-|:-------------- |:-------------------------- |
-| %y-%m-%d/%f    | 2020-09-10/example.json    |
-| %y/%m/%d/%h/%f | 2020/09/10/14/example.json |
+| Format         | Example output                   |
+|:-------------- |:-------------------------------- |
+| %y-%m-%d/%f    | 2020-09-10/example.json          |
+| %y/%m/%d/%h/%f | 2020/09/10/14/example.json       |
+| %H/%p/%f       | willtc.uk/static/js/example.json |
